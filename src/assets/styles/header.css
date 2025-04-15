@@ -1,0 +1,116 @@
+header {
+  position: fixed;
+  z-index: 1;
+  flex-grow: 0;
+  max-height: 5vh;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgb(99, 99, 99);
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    span {
+        color: rgb(148, 255, 255);
+    }
+}
+#search {
+  width: 50vw;
+  padding: 0.25rem 2.3rem;
+  outline: none;
+  border-radius: 1rem;
+  border: none;
+  &:focus {
+    background-color: rgb(238, 238, 238);
+  }
+}
+
+#searchbar {
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  .search-icon,
+  #clear-icon {
+    position: absolute;
+  }
+  .search-icon {
+    left: 0.5rem;
+  }
+  #clear-icon {
+    right: 0.5rem;
+    outline: none;
+    background-color: transparent;
+    padding: 0.1rem;
+    border: none;
+    display: none;
+    border-radius: 50%;
+    &.active {
+        display: flex;
+        align-items: center;
+    }
+    &:hover {
+      background-color: gray;
+    }
+  }
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  input[type="checkbox"].toggle{
+    position: absolute;
+    opacity: 0;
+    left: -9000px;
+    top: -9000px;
+  }
+
+  input[type="checkbox"].toggle:focus + label::before{
+    outline: 1px solid black;
+  }
+  input[type="checkbox"].toggle + label {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="checkbox"].toggle + label::before {
+    content: '';
+    width: 4em;
+    height: 2em;
+    background-color: rgb(216, 216, 216);
+    border-radius: 1em;
+  }
+
+  input[type="checkbox"].toggle + label::after {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0.2em;
+    content: '\2109';
+    color: rgb(179, 255, 255);
+    width: 1.6em;
+    height: 1.6em;
+    background-color: rgb(105, 105, 105);
+    border-radius: 1em;
+    transition: transform 200ms ease-in-out;
+  }
+
+  input[type="checkbox"].toggle:checked + label::after {
+    transform: translateX(2em);
+    content: '\2103';
+  }
+}
+
+@media screen and (max-width: 480px){
+    #header-name{
+        display: none;
+    }
+}

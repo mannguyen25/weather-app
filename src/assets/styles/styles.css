@@ -50,3 +50,16 @@
   #root, #__next {
     isolation: isolate;
   }
+
+  :root {
+    font-family: "Merriweather", serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #559eff;
+    /* background: #2A7B9B;
+    background: linear-gradient(34deg,rgba(42, 123, 155, 1) 61%, rgba(249, 243, 193, 1) 88%, rgba(255, 255, 255, 1) 98%); */
+  }

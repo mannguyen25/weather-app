@@ -1,0 +1,242 @@
+#content {
+    display: none;
+	margin-top: 4vh;
+	padding: 3rem 0.5rem;
+	gap: 1rem;
+	.material-symbols-outlined {
+		font-size: clamp(1rem, calc(8vw + 0.1rem), 4rem);
+		font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 0, "opsz" 24;
+	}
+	&.active {
+        display: flex;
+        flex-direction: column;
+	}
+	.clear_day {
+		color: rgb(255, 197, 90);
+	}
+}
+
+[class*="temp"]::after {
+	content: "°";
+}
+
+#my-location-container {
+	font-size: 1.5rem;
+	text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	#my-location-header {
+		text-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.5),
+			0 0 0.5rem rgba(0, 0, 0, 0.5);
+		font-size: 0.75rem;
+	}
+	#my-current-weather {
+		color: rgb(126, 255, 255);
+	}
+	#my-current-temp {
+		padding-left: 0.5rem;
+	}
+	#my-current-description {
+		text-transform: capitalize;
+	}
+}
+
+#daily-overview-container,
+#forecast-container {
+	padding: 1rem;
+	overflow: hidden;
+	background-color: rgba(82, 82, 82, 0.486);
+	border-radius: 1.5rem;
+	margin: 0 1rem;
+	color: white;
+}
+#daily-overview-container {
+	padding-bottom: 0;
+}
+
+#daily-description {
+	text-align: center;
+	margin-bottom: 1rem;
+	position: relative;
+	&::after {
+		position: absolute;
+		bottom: -0.5rem;
+		left: 0;
+		content: "";
+		width: 100%;
+		height: 2px;
+		background-color: rgba(255, 255, 255, 0.288);
+	}
+}
+
+#hourly-weather-container {
+	display: flex;
+	gap: 1.5rem;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+.hourly-weather-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: clamp(1rem, calc(4vw + 0.1rem), 4rem);
+	.hour {
+		font-size: clamp(1rem, calc(2vw + 0.1rem), 4rem);
+	}
+}
+
+#forecast-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: rgba(255, 255, 255, 0.61);
+	position: relative;
+	&::after {
+		position: absolute;
+		bottom: -0.5rem;
+		left: 0;
+		content: "";
+		width: 100%;
+		height: 2px;
+		background-color: rgba(255, 255, 255, 0.288);
+	}
+	.material-symbols-outlined {
+		font-size: 1.5rem;
+	}
+}
+
+#forecast-header-text {
+	text-transform: uppercase;
+}
+
+#forecast-container {
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+}
+
+.day-card:last-child {
+	border: none;
+	padding-bottom: 0;
+}
+
+.day-card {
+	padding: 1rem 0rem;
+	font-size: clamp(0.5rem, calc(5vw + 0.1rem), 2rem);
+	display: grid;
+	align-items: center;
+	border-bottom: 3px solid rgba(255, 255, 255, 0.288);
+	.minmax-container {
+		width: 100%;
+		display: flex;
+		justify-self: center;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5rem;
+		.progress-bar {
+			position: relative;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 0.5rem;
+			background-color: rgba(73, 73, 73, 0.432);
+			border-radius: 1em;
+		}
+		.indicator {
+			content: "";
+			position: absolute;
+			width: 1rem;
+			height: 1rem;
+			border-radius: 50%;
+			background-color: white;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	::-webkit-scrollbar {
+		width: 1px;
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: transparent;
+	}
+	.day-card {
+		grid-template-columns: 1fr 1fr 3fr;
+		.material-symbols-outlined {
+			justify-self: center;
+		}
+	}
+}
+@media screen and (min-width: 480px) {
+	::-webkit-scrollbar {
+		width: 0em;
+		height: 0.5rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 2rem;
+		background-color: rgba(167, 167, 167, 0.377);
+	}
+	.day-card {
+		grid-template-columns: 2fr 2fr 6fr;
+	}
+}
+
+.loader {
+	margin: auto;
+	width: 24vw;
+	height: 24vw;
+	background: #ffc457;
+	display: block;
+	position: relative;
+	box-sizing: border-box;
+	animation: rotationBack 3s linear infinite reverse;
+	box-shadow: 0 0 10vw rgba(0, 0, 0, 0.35);
+    &.hide {
+        display: none;
+    }
+}
+.loader::before {
+	content: "";
+	box-sizing: border-box;
+	left: 0;
+	top: 0;
+	transform: rotate(45deg);
+	position: absolute;
+	width: 24vw;
+	height: 24vw;
+	background: #ffc457;
+}
+.loader::after {
+	content: "";
+	box-sizing: border-box;
+	width: 28vw;
+	height: 28vw;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #ffc457;
+	transform: translate(-50%, -50%);
+}
+@keyframes rotationBack {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}

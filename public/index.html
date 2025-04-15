@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="content"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bedtime,calendar_month,clear_day,close,cloud,foggy,partly_cloudy_day,partly_cloudy_night,rainy,rainy_heavy,rainy_light,search,thunderstorm"
+    />
+    <link rel="shortcut icon" href="./icons/icons8-weather-ios-17-outlined-120.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <title>Weather</title>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <img src="./icons/icons8-weather-ios-17-outlined-32.png" alt="weather icon">
+        <span id="header-name">Weather</span>
+      </div>
+      <form id="searchbar">
+        <span class="material-symbols-outlined search-icon"> search </span>
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="address, city, or zip code"
+        />
+        <button type="button" id="clear-icon">
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+      </form>
+      <div class="toggle-container">
+        <input type="checkbox" name="temp-unit" id="temp-unit" class="toggle" />
+        <label for="temp-unit"></label>
+      </div>
+    </header>
+    <div class="loader"></div>
+    <div id="content">
+        <div id="my-location-container">
+            <span id="my-location-header">My Location</span>
+            <h2 id="my-current-location"></h2>
+            <h1 id="my-current-temp" class="temp">--</h1>
+            <h4 id="my-current-description"></h4>
+            <h4 class="high-low-container">
+                <span id="my-current-high" class="temp"></span>
+                <span id="my-current-low" class="temp"></span>
+            </h4>
+        </div>
+        <div id="daily-overview-container">
+            <div id="daily-description">
+            </div>
+            <div id="hourly-weather-container">
+                <template data-hour-card-template>
+                    <div class="hourly-weather-card">
+                        <span class="hour" data-time></span>
+                        <span class="material-symbols-outlined" data-icon></span>                
+                        <span class="temp" data-temp></span>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div id="forecast-container">
+            <div id="forecast-header">
+                <span class="material-symbols-outlined">
+                    calendar_month
+                </span>
+                <span id="forecast-header-text">10-Day Forecast</span>
+            </div>
+            <div id="day-card-container">
+                <template data-day-card-template>
+                    <div class="day-card">
+                        <span data-date></span>
+                        <span class="material-symbols-outlined" data-date-icon></span>
+                        <div class="minmax-container">
+                            <span class="min-temp"></span>
+                            <div class="progress-bar"><span class="indicator"></span></div>
+                            <span class="max-temp"></span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+  </body>
 </html>
